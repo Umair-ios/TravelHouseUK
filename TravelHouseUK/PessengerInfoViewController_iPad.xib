@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="4510" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PessengerInfoViewController">
+            <connections>
+                <outlet property="PessengersView" destination="HaB-cw-eY3" id="0Vl-pg-TLl"/>
+                <outlet property="accesoryview" destination="jcw-yr-KDL" id="uR3-Jz-kHX"/>
+                <outlet property="barBtn" destination="wfE-ey-cBS" id="VTb-Cv-LbU"/>
+                <outlet property="bgScroll" destination="YSc-g9-iuq" id="ens-iz-6h6"/>
+                <outlet property="dob" destination="IfH-kn-DAx" id="Ipf-PU-nro"/>
+                <outlet property="fname" destination="dwZ-8y-gBV" id="knO-a6-Ew5"/>
+                <outlet property="gender" destination="3Os-uF-NST" id="RMW-l3-M7T"/>
+                <outlet property="lName" destination="Cno-CI-2Wd" id="QbN-ub-vAa"/>
+                <outlet property="passport" destination="OIQ-KI-jrG" id="oEW-SJ-Umv"/>
+                <outlet property="pessengerNumberLbl" destination="SbU-Za-Bkz" id="ypo-cv-Cfv"/>
+                <outlet property="pickupdate" destination="S6Q-2d-ryD" id="QXW-U2-vQR"/>
+                <outlet property="rights" destination="dUR-we-Sd9" id="gEQ-Np-XZj"/>
+                <outlet property="view" destination="TsD-XN-16s" id="DY7-Av-7B0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="TsD-XN-16s">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header.png" id="znO-k5-3wt">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="86"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" id="Oh9-xj-hfW">
+                    <rect key="frame" x="274" y="9" width="220" height="55"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lJa-LM-3Vg">
+                    <rect key="frame" x="690" y="23" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" backgroundImage="menu.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02bg.png" id="h4d-hj-dg9">
+                    <rect key="frame" x="0.0" y="84" width="768" height="890"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="footer.png" id="kLo-vN-rA5">
+                    <rect key="frame" x="0.0" y="974" width="768" height="50"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel House UK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H6P-WO-aCk">
+                    <rect key="frame" x="20" y="980" width="130" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.75982862900000003" green="0.50667842740000002" blue="0.31876890120000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Rights Reserved 2013" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dUR-we-Sd9">
+                    <rect key="frame" x="20" y="996" width="180" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YSc-g9-iuq">
+                    <rect key="frame" x="0.0" y="84" width="768" height="890"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LLW-3E-kye">
+                    <rect key="frame" x="14" y="24" width="66" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" backgroundImage="back.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="back-btn-txt-h.png"/>
+                    <connections>
+                        <action selector="goback:" destination="-1" eventType="touchUpInside" id="37O-RQ-Mfb"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina3.5"/>
+        </view>
+        <view contentMode="scaleToFill" id="HaB-cw-eY3">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="886"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02bg.png" id="j4r-3k-kT3">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="886"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02top_text_bullet.png" id="8yZ-kq-Lyp">
+                    <rect key="frame" x="379" y="52" width="12" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PESSENGER - 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SbU-Za-Bkz">
+                    <rect key="frame" x="246" y="72" width="278" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02search_field.png" id="pap-WY-mH5">
+                    <rect key="frame" x="99" y="265" width="566" height="69"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02search_field.png" id="tO7-RJ-nzO">
+                    <rect key="frame" x="99" y="513" width="566" height="69"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02search_field.png" id="T1B-EC-5CX">
+                    <rect key="frame" x="99" y="142" width="566" height="69"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" id="dwZ-8y-gBV">
+                    <rect key="frame" x="103" y="265" width="562" height="69"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02search_field.png" id="wve-6O-bjg">
+                    <rect key="frame" x="99" y="629" width="566" height="69"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passport" minimumFontSize="17" id="OIQ-KI-jrG">
+                    <rect key="frame" x="103" y="629" width="562" height="69"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PESSENGER INFORMATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="u00-4B-qJk">
+                    <rect key="frame" x="245" y="29" width="278" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02search_field.png" id="Zsf-Yf-tUl">
+                    <rect key="frame" x="99" y="386" width="566" height="69"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" id="Cno-CI-2Wd">
+                    <rect key="frame" x="102" y="386" width="563" height="69"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date Of Birth" minimumFontSize="17" id="IfH-kn-DAx">
+                    <rect key="frame" x="103" y="513" width="562" height="69"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="02search_dropdown.png" id="Mbj-2f-pFu">
+                    <rect key="frame" x="594" y="142" width="71" height="69"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fsH-lf-Qoq">
+                    <rect key="frame" x="615" y="160" width="29" height="33"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="02scrool_icon.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="dropDown" destination="-1" eventType="touchUpInside" id="QNP-ca-Jmd"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mr." minimumFontSize="17" id="3Os-uF-NST">
+                    <rect key="frame" x="103" y="142" width="562" height="69"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="C4y-hJ-hZy">
+                    <rect key="frame" x="243" y="764" width="279" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="Continue" backgroundImage="01 - Pagination.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="next" destination="-1" eventType="touchUpInside" id="OyG-53-DJ6"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="S6Q-2d-ryD">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="216"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <date key="date" timeIntervalSinceReferenceDate="414428616.760185">
+                <!--2014-02-18 15:03:36 +0000-->
+            </date>
+            <timeZone key="timeZone" name="America/Los_Angeles">
+                <data key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</data>
+            </timeZone>
+            <connections>
+                <action selector="datechange:" destination="-1" eventType="valueChanged" id="MLU-tT-lZy"/>
+            </connections>
+        </datePicker>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jcw-yr-KDL">
+            <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem title="Done" id="wfE-ey-cBS">
+                    <connections>
+                        <action selector="donechanges:" destination="-1" id="drR-HA-Dlc"/>
+                    </connections>
+                </barButtonItem>
+            </items>
+        </toolbar>
+    </objects>
+    <resources>
+        <image name="01 - Pagination.png" width="881" height="101"/>
+        <image name="02bg.png" width="640" height="760"/>
+        <image name="02scrool_icon.png" width="20" height="29"/>
+        <image name="02search_dropdown.png" width="66" height="61"/>
+        <image name="02search_field.png" width="484" height="61"/>
+        <image name="02top_text_bullet.png" width="9" height="6"/>
+        <image name="back-btn-txt-h.png" width="100" height="61"/>
+        <image name="back.png" width="128" height="43"/>
+        <image name="footer.png" width="640" height="103"/>
+        <image name="header.png" width="640" height="99"/>
+        <image name="logo.png" width="249" height="73"/>
+        <image name="menu.png" width="58" height="58"/>
+    </resources>
+</document>
