@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E1F3A5BF-C418-46CD-ABEB-E9470E9594CA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TravelHouseUK</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8082F5D1-7016-4CFF-8714-78A8872216A7</key>
+		<string>https://github.com/umairhhhs/TravelHouseUK.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TravelHouseUK.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8082F5D1-7016-4CFF-8714-78A8872216A7</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/umairhhhs/TravelHouseUK.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8082F5D1-7016-4CFF-8714-78A8872216A7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8082F5D1-7016-4CFF-8714-78A8872216A7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TravelHouseUK</string>
+		</dict>
+	</array>
+</dict>
+</plist>
