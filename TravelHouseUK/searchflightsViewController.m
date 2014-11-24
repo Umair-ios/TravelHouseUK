@@ -99,11 +99,13 @@
     mydate=[NSDate date];
     
     NSDateComponents *offset = [[NSDateComponents alloc] init] ;
-    
-    mydate = [[NSCalendar currentCalendar] dateByAddingComponents:offset toDate:mydate options:0];
+    [offset setDay:3];
+    myRdate = [[NSCalendar currentCalendar] dateByAddingComponents:offset toDate:mydate options:0];
     
     [departuredatepicker setMinimumDate:mydate];
     [returndatepicker setMinimumDate:mydate];
+    [returndatepicker setDate:myRdate];
+
     
     CabinClasses=[[NSArray alloc]initWithObjects:@"Economy",@"Premium Economy",@"Business",@"FirstClass", nil];
     classPicker.delegate=self;
@@ -243,8 +245,11 @@
         else if(textField==txtRdate)
         {
             if (textField.text.length<1) {
-                mydate=returndatepicker.date;
-                textField.text=[dateFormatter stringFromDate:mydate];
+
+                NSDateComponents *offset = [[NSDateComponents alloc] init] ;
+                [offset setDay:3];
+                myRdate = [[NSCalendar currentCalendar] dateByAddingComponents:offset toDate:mydate options:0];
+                textField.text=[dateFormatter stringFromDate:myRdate];
             }
             
             CGPoint p=CGPointMake(0, 200);
