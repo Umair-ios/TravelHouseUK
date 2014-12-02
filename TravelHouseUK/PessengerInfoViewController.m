@@ -287,7 +287,7 @@
     
     
     
-//    check=-1;
+    check=-1;
    
     if ( [elementName isEqualToString:@"GrandTotal"])
     {
