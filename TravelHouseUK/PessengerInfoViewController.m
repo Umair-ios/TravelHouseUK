@@ -285,7 +285,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
     
-    
+    /*
     
     check=-1;
    
@@ -299,13 +299,13 @@
     {
         check=1;
     }
-    
-    //PNRNo
-    if ( [elementName isEqualToString:@"PNRNo"])
+     */
+
+    //PriceChange
+    if ( [elementName isEqualToString:@"PriceChange"])
     {
         check=2;
     }
-    
     //SearchFareResponse Error
     if ( [elementName isEqualToString:@"BookFlightResponse"])
     {
@@ -324,21 +324,13 @@
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    if(check==0)
-    {
-        data.Amount=string;
-    }
 
-    if(check==1)
-    {
-        data.sessionId=string;
-    }
     if(check==2)
     {
         pnrNo=string;
     }
     
-    else if(check==12)
+  if(check==12)
     {
         error=string;
     }
@@ -473,7 +465,7 @@
         //[p setShouldProcessNamespaces:YES];
         [p parse];
         //[self performSelectorOnMainThread:@selector(ShouldProcessPay) withObject:nil waitUntilDone:NO];
-        if(data.sessionId!=nil && data.sessionId.length>0)
+        if(check!=12)
         {
             NSString *nibname=@"";
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
