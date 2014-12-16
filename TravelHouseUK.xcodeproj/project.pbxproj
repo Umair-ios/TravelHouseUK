@@ -1276,7 +1276,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = TravelHouseUK;
-				PROVISIONING_PROFILE = "28D3B622-D541-4156-A5DC-CC8412B26ADF";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1299,7 +1299,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = TravelHouseUK;
-				PROVISIONING_PROFILE = "28D3B622-D541-4156-A5DC-CC8412B26ADF";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

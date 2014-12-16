@@ -1,18 +1,20 @@
 //
 //  PayPalMobile.h
 //
-//  Version 2.0.1
+//  Version 2.8.0
 //
-//  Copyright (c) 2013, PayPal
+//  Copyright (c) 2014, PayPal
 //  All rights reserved.
 //
 
 //  All-in-one import for the PayPal Mobile SDK
 
 #import "PayPalConfiguration.h"
+#import "PayPalFuturePaymentViewController.h"
+#import "PayPalOAuthScopes.h"
 #import "PayPalPayment.h"
 #import "PayPalPaymentViewController.h"
-//#import "PayPalFuturePaymentViewController.h"
+#import "PayPalProfileSharingViewController.h"
 
 /// Production (default): Normal, live environment. Real money gets moved.
 /// This environment MUST be used for App Store submissions.
@@ -58,15 +60,23 @@ extern NSString *const PayPalEnvironmentNoNetwork;
 /// This method MUST be called prior to initiating a pre-consented payment (a "future payment") from a mobile device.
 /// Pass the result to your server, to include in the payment request sent to PayPal.
 /// Do not otherwise cache or store this value.
-/// @param environment
-/// The PayPal Mobile SDK can operate in different environments to facilitate development and testing.
-/// See PayPalEnvironmentProduction, PayPalEnvironmentSandbox, PayPalEnvironmentNoNetwork for more details.
-/// @return applicationCorrelationID Your server will send this to PayPal in a 'Paypal-Application-Correlation-Id' header.
-+ (NSString *)applicationCorrelationIDForEnvironment:(NSString *)environment;
+/// @return clientMetadataID Your server will send this to PayPal in a 'PayPal-Client-Metadata-Id' header.
++ (NSString *)clientMetadataID;
+
+/// Method deprecated use clientMetadataID instead
++ (NSString *)applicationCorrelationIDForEnvironment:(NSString *)environment __attribute__((deprecated("Use clientMetadataID instead.")));
+
+/// Delete all previously remembered user data (credit card, email, phone, PayPal account),
+/// for all environments. (See PayPalEnvironmentProduction, PayPalEnvironmentSandbox, PayPalEnvironmentNoNetwork.)
+///
+/// You might choose to call this method, for example, when a user logs out of your app.
+///
+/// @note Do NOT call this method while any PayPal Mobile SDK viewcontroller is active.
+/// @see PayPalConfiguration rememberUser.
++ (void)clearAllUserData;
 
 /// @return The version of the PayPal Mobile SDK in use. Version numbering follows http://semver.org/.
 /// @note Please be sure to include this library version in tech support requests.
 + (NSString *)libraryVersion;
-
 
 @end

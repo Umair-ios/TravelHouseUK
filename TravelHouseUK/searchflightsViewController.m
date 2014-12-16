@@ -86,6 +86,8 @@
     //txtflyingto.inputView=flyingto;
     //txtflyingto.inputAccessoryView=accesoryview;
     
+    streetTableview.rowHeight = 44;
+    
     txtDdate.inputView=departuredatepicker;
     txtDdate.inputAccessoryView=accesoryview;
     
@@ -120,7 +122,7 @@
     tapgest.delegate=self;
     //[tapgest setDelaysTouchesBegan:YES];
     [scroller addGestureRecognizer:tapgest];
-    
+    jsonDataArray = [[NSMutableArray alloc]init];
 }
 
 -(void)removeTableview:(UITapGestureRecognizer *)recognizer
@@ -359,6 +361,11 @@
             [jsonDataArray removeAllObjects];
             jsonDataArray=[jsonObjects mutableCopy];
             
+            if(streetTableview==nil || [streetTableview isKindOfClass: [NSNull class]])
+            {
+                streetTableview = [[UITableView alloc]initWithFrame:CGRectZero];
+                streetTableview.rowHeight = 44;
+            }
             streetTableview.delegate=self;
             streetTableview.dataSource=self;
             
@@ -366,6 +373,7 @@
             //[self.view addSubview:streetTableview];
             
             //[self performSelectorOnMainThread:@selector(addtblview) withObject:nil waitUntilDone:YES];
+            if(![scroller.subviews containsObject:streetTableview])
             [scroller addSubview:streetTableview];
             
             [Generalfunctionclass addColoredlayer:streetTableview forColor:@"gray"];
@@ -535,25 +543,34 @@
     @try {
         if(hintCheck==1)
         {
-            NSDictionary *dictData=[jsonDataArray objectAtIndex:indexPath.row];
-            txtflyingfrom.text=[dictData objectForKey:@"label"];
-            ffrom=[dictData objectForKey:@"id"];
+            if(indexPath.row < jsonDataArray.count)
+            {
+                NSDictionary *dictData=[jsonDataArray objectAtIndex:indexPath.row];
+                txtflyingfrom.text=[dictData objectForKey:@"label"];
+                ffrom=[dictData objectForKey:@"id"];
+            }
             //[streetTableview removeFromSuperview];
             [self textFieldShouldReturn:txtflyingfrom];
         }
         else if (hintCheck==2)
         {
-            NSDictionary *dictData=[jsonDataArray objectAtIndex:indexPath.row];
-            txtflyingto.text=[dictData objectForKey:@"label"];
-            fto=[dictData objectForKey:@"id"];
+            if(indexPath.row < jsonDataArray.count)
+            {
+                NSDictionary *dictData=[jsonDataArray objectAtIndex:indexPath.row];
+                txtflyingto.text=[dictData objectForKey:@"label"];
+                fto=[dictData objectForKey:@"id"];
+            }
             //[streetTableview removeFromSuperview];
             [self textFieldShouldReturn:txtflyingto];
         }
         else if (hintCheck==3)
         {
-            NSDictionary *dictData=[jsonDataArray objectAtIndex:indexPath.row];
-            txtAirline.text=[dictData objectForKey:@"label"];
-            airline=[dictData objectForKey:@"id"];
+            if(indexPath.row < jsonDataArray.count)
+            {
+                NSDictionary *dictData=[jsonDataArray objectAtIndex:indexPath.row];
+                txtAirline.text=[dictData objectForKey:@"label"];
+                airline=[dictData objectForKey:@"id"];
+            }
             //[streetTableview removeFromSuperview];
             [self textFieldShouldReturn:txtAirline];
         }

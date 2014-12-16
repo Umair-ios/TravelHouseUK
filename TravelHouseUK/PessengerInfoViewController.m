@@ -19,7 +19,16 @@
     NSString *error;
     NSString *paymentId;
     int check;
-    NSString *pnrNo;
+    BOOL priceChanged;
+    BOOL errorNotFound;
+    
+    float InTax;
+    float InfBFare;
+    float ChdBFare;
+    float CHTax;
+    float AdtBFare;
+    float AdTax;
+
 }
 
 @synthesize PessengersView,bgScroll,pessengersCounter,pessengerNumberLbl,totallPessengers,fname,lName,gender,dob,passport,pickupdate,barBtn,accesoryview,totallAdults,totallInfants,totallChilds;
@@ -302,45 +311,91 @@
      */
 
     //PriceChange
+    if ( [elementName isEqualToString:@"NoInfant"])
+    {
+        check=100;
+    } if ( [elementName isEqualToString:@"NoAdult"])
+    {
+        check=102;
+    }  if ( [elementName isEqualToString:@"NoChild"])
+    {
+        check=104;
+    }
+    
+    if ( [elementName isEqualToString:@"AdtBFare"])
+    {
+        check=110;
+    }if ( [elementName isEqualToString:@"AdTax"])
+    {
+        check=111;
+    }if ( [elementName isEqualToString:@"ChdBFare"])
+    {
+        check=112;
+    }if ( [elementName isEqualToString:@"CHTax"])
+    {
+        check=113;
+    }if ( [elementName isEqualToString:@"InfBFare"])
+    {
+        check=114;
+    }if ( [elementName isEqualToString:@"InTax"])
+    {
+        check=115;
+    }
+    
+    
+    
+    
     if ( [elementName isEqualToString:@"PriceChange"])
     {
         check=2;
     }
-    //SearchFareResponse Error
-    if ( [elementName isEqualToString:@"BookFlightResponse"])
-    {
-        check=12;
-    }
-    if ( [elementName isEqualToString:@"Error"])
-    {
-        check=12;
-    }
-    if ( [elementName isEqualToString:@"error"])
-    {
-        check=12;
-    }
+    
 }
 
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-
+    if (priceChanged) {
+        if (check==100)
+            [dataStorage sharedCenter].totallInfants=[string intValue];
+        if (check==102)
+            [dataStorage sharedCenter].totallAdults=[string intValue];
+        if (check==105)
+            [dataStorage sharedCenter].totallChilds=[string intValue];
+        
+        if (check==110)
+            AdtBFare=[string floatValue];
+            if (check==111)
+            AdTax=[string floatValue];
+        if (check==112)
+            ChdBFare=[string floatValue];
+        if (check==113)
+            CHTax=[string floatValue];
+        if (check==114)
+            InfBFare=[string floatValue];
+        if (check==115)
+            InTax=[string floatValue];
+    }
+   
     if(check==2)
     {
-        pnrNo=string;
+        errorNotFound=YES;
+        
+        priceChanged=[string integerValue];
     }
     
-  if(check==12)
-    {
-        error=string;
-    }
-    
+ 
     //check=-1;
 }
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+
 {
-    
+    if (priceChanged) {
+        [dataStorage sharedCenter].totallInfantFare =[NSString stringWithFormat:@"%.02f",InfBFare+InTax];
+        [dataStorage sharedCenter].totallChildFare =[NSString stringWithFormat:@"%.02f",ChdBFare+CHTax];
+        [dataStorage sharedCenter].totallAdultFare =[NSString stringWithFormat:@"%.02f",AdtBFare+AdTax];
+    }
     
 }
 -(void)airFareMatchRequest
@@ -465,8 +520,16 @@
         //[p setShouldProcessNamespaces:YES];
         [p parse];
         //[self performSelectorOnMainThread:@selector(ShouldProcessPay) withObject:nil waitUntilDone:NO];
-        if(check!=12)
+        if(errorNotFound)
         {
+            errorNotFound=NO;
+            if (priceChanged) {
+                priceChanged=NO;
+                
+                [dataStorage sharedCenter].TotalAmount=[NSString stringWithFormat:@"%.02f",[dataStorage sharedCenter].totallInfants*[[dataStorage sharedCenter].totallInfantFare floatValue]+[dataStorage sharedCenter].totallAdults*[[dataStorage sharedCenter].totallAdultFare floatValue]+[dataStorage sharedCenter].totallChilds*[[dataStorage sharedCenter].totallChildFare floatValue]+1.50*([dataStorage sharedCenter].totallPessengers-[dataStorage sharedCenter].totallInfants)+2.50*([dataStorage sharedCenter].totallPessengers-[dataStorage sharedCenter].totallInfants)];
+
+                
+            }
             NSString *nibname=@"";
             if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
                 nibname=@"PessengerConfirmationViewController_iPhone";
