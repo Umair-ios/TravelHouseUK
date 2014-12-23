@@ -246,14 +246,13 @@
         }
         else if(textField==txtRdate)
         {
-            if (textField.text.length<1) {
-
+            if (![mydate isEqual:[NSNull null]]) {
                 NSDateComponents *offset = [[NSDateComponents alloc] init] ;
                 [offset setDay:3];
                 myRdate = [[NSCalendar currentCalendar] dateByAddingComponents:offset toDate:mydate options:0];
                 textField.text=[dateFormatter stringFromDate:myRdate];
             }
-            
+     
             CGPoint p=CGPointMake(0, 200);
             [scroller setContentOffset:p animated:YES];
         }
