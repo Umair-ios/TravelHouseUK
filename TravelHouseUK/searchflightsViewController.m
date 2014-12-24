@@ -303,7 +303,11 @@
 {
     
     if(textField.text.length>0)
-        [self performSelectorInBackground:@selector(searchHintfromservice:) withObject:textField];
+    {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self performSelector:@selector(searchHintfromservice:) withObject:textField afterDelay:0.1f];
+    }
+    //  [self performSelectorInBackground:@selector(searchHintfromservice:) withObject:textField];
     
 }
 
