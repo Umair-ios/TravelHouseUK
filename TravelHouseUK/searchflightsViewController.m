@@ -47,6 +47,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    streetTableview.delegate=self;
+    streetTableview.dataSource=self;
     // Do any additional setup after loading the view from its nib.
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];
@@ -305,14 +307,17 @@
     if(textField.text.length>0)
     {
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    [self performSelector:@selector(searchHintfromservice:) withObject:textField afterDelay:0.1f];
+        [self performSelectorInBackground:@selector(searchHintfromservice:) withObject:textField];
+    //[self performSelector:@selector(searchHintfromservice:) withObject:textField afterDelay:0.1f];
     }
     //  [self performSelectorInBackground:@selector(searchHintfromservice:) withObject:textField];
+   // [NSObject cancelPreviousPerformRequestsWithTarget:a selector:@selector(startDownload) object:nil];
     
 }
 
 -(void)searchHintfromservice:(UITextField *)textField
 {
+    
     NSString *searchtype=@"";
     if(textField==txtflyingfrom)
     {
@@ -335,86 +340,68 @@
     
     NSString *searchHint = [NSString stringWithFormat:@"http://www.travelhouseuk.co.uk/includes/search/%@?term=%@",searchtype,textField.text];
     
-    NSError *Error=nil;
-    
+
     searchHint = [searchHint stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *url=[NSURL URLWithString:searchHint];
     
-    NSData *jsonData=[[NSData alloc]initWithContentsOfURL:url];
     
-    
-    if (jsonData) {
-        
-        id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&Error];
-        
-        if (Error) {
-            NSLog(@"error is %@", [Error localizedDescription]);
-            
-            
-        }
-        
-        else
-        {
-     
-            @try{
-            if(jsonDataArray==Nil)
-                jsonDataArray=[[NSMutableArray alloc]init];
-            
-            [jsonDataArray removeAllObjects];
-            jsonDataArray=[jsonObjects mutableCopy];
-            
-            if(streetTableview==nil || [streetTableview isKindOfClass: [NSNull class]])
-            {
-                streetTableview = [[UITableView alloc]initWithFrame:CGRectZero];
-                streetTableview.rowHeight = 44;
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data, NSError *connectionError)
+     {
+         if (data.length > 0 && connectionError == nil)
+         {
+            NSMutableArray * jsonObjects  = [NSJSONSerialization JSONObjectWithData:data
+                                                                      options:0
+                                                                        error:NULL];
+             
+             
+          
+                 if(jsonDataArray==Nil)
+                     jsonDataArray=[[NSMutableArray alloc]init];
+                 
+                 [jsonDataArray removeAllObjects];
+                 jsonDataArray=[jsonObjects mutableCopy];
+                 
+                 if(streetTableview==nil || [streetTableview isKindOfClass: [NSNull class]])
+                 {
+                     streetTableview = [[UITableView alloc]initWithFrame:CGRectZero];
+                     streetTableview.rowHeight = 44;
+                 }
+                 
+                 CGRect rec=textField.frame;
+
+             if(![scroller.subviews containsObject:streetTableview])
+                     [scroller addSubview:streetTableview];
+                 
+                 [Generalfunctionclass addColoredlayer:streetTableview forColor:@"gray"];
+                 
+                 rec.origin.x+=1;
+                 rec.size.width-=2;
+                 rec.origin.y+=rec.size.height+1;
+                 
+                 NSUInteger count=[jsonDataArray count];
+                 if(count>5)
+                 {
+                     count=5;
+                     [streetTableview setScrollEnabled:YES];
+                 }
+                 else
+                     [streetTableview setScrollEnabled:NO];
+                 
+                 [streetTableview setUserInteractionEnabled:YES];
+                 
+                 rec.size.height=streetTableview.rowHeight*count;
+             
+                 [streetTableview setFrame:rec];
+                 
+                 [streetTableview reloadData];
             }
-            streetTableview.delegate=self;
-            streetTableview.dataSource=self;
-            
-            CGRect rec=textField.frame;
-            //[self.view addSubview:streetTableview];
-            
-            //[self performSelectorOnMainThread:@selector(addtblview) withObject:nil waitUntilDone:YES];
-            if(![scroller.subviews containsObject:streetTableview])
-            [scroller addSubview:streetTableview];
-            
-            [Generalfunctionclass addColoredlayer:streetTableview forColor:@"gray"];
-            
-            rec.origin.x+=1;
-            rec.size.width-=2;
-            rec.origin.y+=rec.size.height+1;
-            
-            NSUInteger count=[jsonDataArray count];
-            if(count>5)
-            {
-                count=5;
-                [streetTableview setScrollEnabled:YES];
-            }
-            else
-                [streetTableview setScrollEnabled:NO];
-            
-            [streetTableview setUserInteractionEnabled:YES];
-            
-            rec.size.height=streetTableview.rowHeight*count;
-            
-            //rec.size.height=self.view.frame.size.height-rec.origin.y-10;
-            
-            [streetTableview setFrame:rec];
-            
-            [streetTableview reloadData];
-            }
-            @catch (NSException *ex) {
-                NSLog(@"Exception%@",[ex description]);
-            }
-        }
-            
-            
+     }];
     }
-        
-    
-    
-}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

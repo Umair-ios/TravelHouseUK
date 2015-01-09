@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <BugSense-iOS/BugSenseController.h>
 
 #import "ViewController.h"
 #import "PayPalMobile.h"
@@ -25,7 +26,8 @@
     
     UINavigationController *nav=[[UINavigationController alloc]initWithRootViewController:self.viewController];
     [nav setNavigationBarHidden:YES];
-    
+    [BugSenseController sharedControllerWithBugSenseAPIKey:@"7b6b1202"];
+
     [PayPalMobile initializeWithClientIdsForEnvironments:@{PayPalEnvironmentProduction : @"AS2ehxBT8D-51FpMyKVxIl5qLljhSQaUA0gzSq9cdXVI0YE6PqBRmyi20Mv4"}];
     
     self.window.rootViewController = nav;
