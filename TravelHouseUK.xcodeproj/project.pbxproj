@@ -20,8 +20,6 @@
 		132D5A2E191CFB3F00BD0BFA /* FareDetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132D5A2C191CFB3F00BD0BFA /* FareDetailViewController_iPhone.xib */; };
 		136537C018D5B54E00317852 /* checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 136537BE18D5B54E00317852 /* checked@2x.png */; };
 		136537C118D5B54E00317852 /* unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 136537BF18D5B54E00317852 /* unchecked@2x.png */; };
-		136537C418D5EC6B00317852 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 136537C218D5EC6B00317852 /* check.png */; };
-		136537C518D5EC6B00317852 /* uncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 136537C318D5EC6B00317852 /* uncheck.png */; };
 		137922BB18A50599006A0039 /* dataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 137922BA18A50599006A0039 /* dataStorage.m */; };
 		137A67D618B0F5920078FD81 /* LoaderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 137A67D518B0F5920078FD81 /* LoaderAlertView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		138D14A91872047C00B15271 /* 01 - index copy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 138D148B1872047C00B15271 /* 01 - index copy.jpg */; };
@@ -198,6 +196,8 @@
 		80083C2C19BF10F500533A35 /* calander.png in Resources */ = {isa = PBXBuildFile; fileRef = 80083C2A19BF10F500533A35 /* calander.png */; };
 		80165FCB1A5FEA5A0011E23A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 80165FCA1A5FEA5A0011E23A /* libz.dylib */; };
 		80165FCD1A5FEA9D0011E23A /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80165FCC1A5FEA9D0011E23A /* BugSense-iOS.framework */; };
+		80165FD01A5FFD0D0011E23A /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 80165FCE1A5FFD0D0011E23A /* check.png */; };
+		80165FD11A5FFD0D0011E23A /* uncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 80165FCF1A5FFD0D0011E23A /* uncheck.png */; };
 		805C4430195987D80074C0BE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 805C442D195987D80074C0BE /* SVProgressHUD.bundle */; };
 		805C4431195987D80074C0BE /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 805C442F195987D80074C0BE /* SVProgressHUD.m */; };
 		808FFAE2197E6DE400D0A1FE /* Splash_Screen_640x960.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 808FFAE0197E6DE400D0A1FE /* Splash_Screen_640x960.jpg */; };
@@ -223,8 +223,6 @@
 		132D5A2C191CFB3F00BD0BFA /* FareDetailViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareDetailViewController_iPhone.xib; sourceTree = "<group>"; };
 		136537BE18D5B54E00317852 /* checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checked@2x.png"; sourceTree = "<group>"; };
 		136537BF18D5B54E00317852 /* unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unchecked@2x.png"; sourceTree = "<group>"; };
-		136537C218D5EC6B00317852 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
-		136537C318D5EC6B00317852 /* uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck.png; sourceTree = "<group>"; };
 		137922B918A50599006A0039 /* dataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dataStorage.h; sourceTree = "<group>"; };
 		137922BA18A50599006A0039 /* dataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dataStorage.m; sourceTree = "<group>"; };
 		137A67D418B0F5920078FD81 /* LoaderAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderAlertView.h; sourceTree = "<group>"; };
@@ -427,6 +425,8 @@
 		80165FC81A5FE7270011E23A /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "BugSense-iOS.framework"; sourceTree = "<group>"; };
 		80165FCA1A5FEA5A0011E23A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		80165FCC1A5FEA9D0011E23A /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../BugSense-iOS.framework"; sourceTree = "<group>"; };
+		80165FCE1A5FFD0D0011E23A /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		80165FCF1A5FFD0D0011E23A /* uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck.png; sourceTree = "<group>"; };
 		805C442C195987D80074C0BE /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		805C442D195987D80074C0BE /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		805C442E195987D80074C0BE /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -808,10 +808,10 @@
 		13F759B818BA3285009446A5 /* Newimages */ = {
 			isa = PBXGroup;
 			children = (
+				80165FCE1A5FFD0D0011E23A /* check.png */,
+				80165FCF1A5FFD0D0011E23A /* uncheck.png */,
 				138E81F7195C2DDC004D0DF4 /* errorpage.png */,
 				13FA91E91909563100AA58D8 /* close.png */,
-				136537C218D5EC6B00317852 /* check.png */,
-				136537C318D5EC6B00317852 /* uncheck.png */,
 				136537BE18D5B54E00317852 /* checked@2x.png */,
 				136537BF18D5B54E00317852 /* unchecked@2x.png */,
 				13F759BB18BA3300009446A5 /* n_book_this_fare_btn.png */,
@@ -996,6 +996,7 @@
 				138D14B81872047C00B15271 /* nav_bottom_strip.png in Resources */,
 				132D5A21191CF7BC00BD0BFA /* FAQViewController_iPad.xib in Resources */,
 				138D14AF1872047C00B15271 /* faqs_icon.png in Resources */,
+				80165FD01A5FFD0D0011E23A /* check.png in Resources */,
 				13A871F0187279B000189AD3 /* 03--seach_results_03.png in Resources */,
 				138D14C31872047C00B15271 /* search_icon_top.png in Resources */,
 				2290880B1872BAE000C2B07E /* BookingStep1ViewController.xib in Resources */,
@@ -1107,8 +1108,8 @@
 				2295EAD317F9BCBE00E7A5BE /* ViewController_iPad.xib in Resources */,
 				13A8721418727D7D00189AD3 /* 07Pagination.png in Resources */,
 				808FFAE2197E6DE400D0A1FE /* Splash_Screen_640x960.jpg in Resources */,
+				80165FD11A5FFD0D0011E23A /* uncheck.png in Resources */,
 				13A871E71872782100189AD3 /* 03Pagination.png in Resources */,
-				136537C518D5EC6B00317852 /* uncheck.png in Resources */,
 				13A871E81872782100189AD3 /* 03top_button.png in Resources */,
 				138D14BE1872047C00B15271 /* nav_hover.png in Resources */,
 				13A8721318727D7D00189AD3 /* 07pagination_left_errow.png in Resources */,
@@ -1134,7 +1135,6 @@
 				13A8721718727D7D00189AD3 /* 07scrool_icon.png in Resources */,
 				138E81F8195C2DDC004D0DF4 /* errorpage.png in Resources */,
 				13A8721518727D7D00189AD3 /* 07phone_icon.png in Resources */,
-				136537C418D5EC6B00317852 /* check.png in Resources */,
 				132D5A27191CF7F900BD0BFA /* PersonalinfoViewController_iPhone.xib in Resources */,
 				139E705F18833B19000A650E /* xmltest.txt in Resources */,
 				13A871E51872782100189AD3 /* 03pagination_left_errow.png in Resources */,

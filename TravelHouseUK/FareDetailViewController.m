@@ -86,12 +86,12 @@
     if(termsAccepted==0)
     {
         termsAccepted=1;
-        [temp setBackgroundImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
+        [temp setImage:[UIImage imageNamed:@"check.png"] forState:UIControlStateNormal];
     }
     else
     {
         termsAccepted=0;
-        [temp setBackgroundImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
+        [temp setImage:[UIImage imageNamed:@"uncheck.png"] forState:UIControlStateNormal];
     }
     
 }
