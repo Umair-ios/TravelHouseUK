@@ -99,7 +99,7 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
     
     NSString *strWithURL = [NSString stringWithFormat:@"%@",baseurl];
     
-    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=%@&txtMail",SecurityKey,txtType,[params objectAtIndex:0]];
+    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=%@&txtMail=%@",SecurityKey,txtType,[params objectAtIndex:0],[params objectAtIndex:1]];
     
     //strWithURL = [strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"strConfirmChallenge=%@",strWithURL);

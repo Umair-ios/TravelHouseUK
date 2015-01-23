@@ -74,9 +74,9 @@
     _payPalConfig.acceptCreditCards = YES;
     _payPalConfig.languageOrLocale = @"en_GB";
     
-    _payPalConfig.merchantName = @"TravelHouseUK";
+    _payPalConfig.merchantName = @"UKTravel";
     _payPalConfig.merchantPrivacyPolicyURL = [NSURL URLWithString:@"http://www.americantaxi.com"];
-    _payPalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"http://m.travelhouseuk.co.uk/user-agreement.php?mark=iphone"];
+    _payPalConfig.merchantUserAgreementURL = [NSURL URLWithString:@"http://www.americantaxi.com"];
     
     // Setting the languageOrLocale property is optional.
     //
@@ -869,52 +869,11 @@
 }
 
 - (IBAction)fareMatch:(id)sender {
+    [self pay];
+//    [SVProgressHUD showWithStatus:@"Loading..."];
+//    self.view.userInteractionEnabled=NO;
+//    [self airFareMatchRequest];
     
-    NSString *paxdetais=[data makePaxDetails];
-    
-    NSString *smsg=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                    "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-                    "<soap:Body>\n"
-                    "<BookFlight xmlns=\"http://tempuri.org/\">\n"
-                    "<bookingXML>\n"
-                    "<![CDATA["
-                    "<BookingXML>\n"
-                    "<SessionId>%@</SessionId>\n"
-                    "<FlightDetail>\n"
-                    "%@"
-                    "</FlightDetail>\n"
-                    "%@"
-                    "<SearchDetail>\n"
-                    "%@"
-                    "</SearchDetail>\n"
-                    "</BookingXML>\n"
-                    "]]>"
-                    "</bookingXML>\n"
-                    "</BookFlight>\n"
-                    "</soap:Body>\n"
-                    "</soap:Envelope>",data.sessionId,data.requestItenary,paxdetais,data.searchQuery];
-
-    
-    
-    NSArray *arr=[[NSArray alloc]initWithObjects:smsg, nil];
-    
-    [[MessageSender sharedCenter] performSelectorInBackground:@selector(bookingService:) withObject:arr];
-    
-    NSString *nibname=@"";
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        nibname=@"FareDetailViewController_iPhone";
-    } else {
-        nibname=@"FareDetailViewController_iPad";
-    }
-    
-    FareDetailViewController *BSVC=[[FareDetailViewController alloc]initWithNibName:nibname bundle:nil];
-    BSVC.bookingDone=true;
-    BSVC.pnrno=pnrNo;
-    BSVC.paypalid=paymentId;
-    BSVC.fromPcvc=YES;
-    
-    [self.navigationController pushViewController:BSVC animated:YES];
-
 }
 
 - (BOOL)prefersStatusBarHidden {
