@@ -97,19 +97,6 @@
     
     NSLog(@"PayPal iOS SDK version: %@", [PayPalMobile libraryVersion]);
     
-   /* NSString *paxdetais=[data makePaxDetails];
-    
-    NSLog(@"Airfare Match Request : <FareMatchRequest>\n"
-          "<FlightDetail>\n"
-          "%@"
-          "</FlightDetail>\n"
-          "%@"
-          "<SearchDetail>\n"
-          "%@"
-          "</SearchDetail>\n"
-          "</FareMatchRequest>",data.requestItenary,paxdetais,data.searchQuery);*/
-    
-    //[self airFareMatchRequest];
     
     UIImageView *imageView=[[UIImageView alloc]initWithImage:data.image];
     [bgScroller addSubview:imageView];
@@ -368,80 +355,6 @@
     }
     
     
-}
-
--(void)airFareMatchRequest
-{
-    searchType=0;
-    NSString *paxdetais=[data makePaxDetails];
-    
-    NSLog(@"Airfare Match Request : <FareMatchRequest>\n"
-          "<FlightDetail>\n"
-          "%@"
-          "</FlightDetail>\n"
-          "%@"
-          "<SearchDetail>\n"
-          "%@"
-          "</SearchDetail>\n"
-          "</FareMatchRequest>",data.requestItenary,paxdetais,data.searchQuery);
-    
-    NSString *smsg=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                    "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-                    "<soap:Body>\n"
-                    "<AirFareMatch xmlns=\"http://tempuri.org/\">\n"
-                    "<bookingXML>\n"
-                    "<![CDATA["
-                    "<FareMatchRequest>\n"
-                    "<FlightDetail>\n"
-                    "%@"
-                    "</FlightDetail>\n"
-                    "%@"
-                    "<SearchDetail>\n"
-                    "%@"
-                    "</SearchDetail>\n"
-                    "</FareMatchRequest>"
-                    "]]>"
-                    "</bookingXML>\n"
-                    "</AirFareMatch>\n"
-                    "</soap:Body>\n"
-                    "</soap:Envelope>",data.requestItenary,paxdetais,data.searchQuery];
-    
-    // create a url to your asp.net web service.
-    NSURL *tmpURl=[NSURL URLWithString:[NSString stringWithFormat:@"http://services.crystaltravel.co.uk/XMLAPI/FLIGHT/FLIGHTSERVICE.ASMX?op=AirFareMatch"]];
-    
-    // create a request to your asp.net web service.
-    NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:tmpURl];
-    
-    //Host: services.test.crystaltravel.co.uk
-    [theRequest addValue:@"services.crystaltravel.co.uk" forHTTPHeaderField:@"Host"];
-    
-    
-    // add http content type - to your request
-    [theRequest addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    // add  SOAPAction - webMethod that is going to be called
-    [theRequest addValue:@"http://tempuri.org/AirFareMatch" forHTTPHeaderField:@"SOAPAction"];
-    
-    // count your soap message lenght - which is required to be added in your request
-    NSString *msgLength=[NSString stringWithFormat:@"%lu",(unsigned long)[smsg length]];
-    // add content length
-    [theRequest addValue:msgLength forHTTPHeaderField:@"Content-Length"];
-    
-    // set method - post
-    [theRequest setHTTPMethod:@"POST"];
-    
-    // set http request - body
-    [theRequest setHTTPBody:[smsg dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // establish connection with your request & here delegate is self, so you need to implement connection's methods
-    NSURLConnection *con=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    
-    // if connection is established
-    if(con)
-    {
-        myWebData=[NSMutableData data];
-        // here -> NSMutableData *myWebData; -> declared in .h file
-    }
 }
 
 -(void)bookFlightRequest
@@ -869,13 +782,52 @@
 }
 
 - (IBAction)fareMatch:(id)sender {
-    [self pay];
-//    [SVProgressHUD showWithStatus:@"Loading..."];
-//    self.view.userInteractionEnabled=NO;
-//    [self airFareMatchRequest];
     
-}
+    NSString *paxdetais=[data makePaxDetails];
+    
+    NSString *smsg=[NSString stringWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+                    "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
+                    "<soap:Body>\n"
+                    "<BookFlight xmlns=\"http://tempuri.org/\">\n"
+                    "<bookingXML>\n"
+                    "<![CDATA["
+                    "<BookingXML>\n"
+                    "<SessionId>%@</SessionId>\n"
+                    "<FlightDetail>\n"
+                    "%@"
+                    "</FlightDetail>\n"
+                    "%@"
+                    "<SearchDetail>\n"
+                    "%@"
+                    "</SearchDetail>\n"
+                    "</BookingXML>\n"
+                    "]]>"
+                    "</bookingXML>\n"
+                    "</BookFlight>\n"
+                    "</soap:Body>\n"
+                    "</soap:Envelope>",data.sessionId,data.requestItenary,paxdetais,data.searchQuery];
+    
+        NSArray *arr=[[NSArray alloc]initWithObjects:paymentId,smsg, nil];
+        
+        [[MessageSender sharedCenter] performSelectorInBackground:@selector(bookingService:) withObject:arr];
 
+    
+    NSString *nibname=@"";
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        nibname=@"FareDetailViewController_iPhone";
+    } else {
+        nibname=@"FareDetailViewController_iPad";
+    }
+    
+    FareDetailViewController *BSVC=[[FareDetailViewController alloc]initWithNibName:nibname bundle:nil];
+    BSVC.bookingDone=true;
+    BSVC.pnrno=pnrNo;
+    BSVC.paypalid=paymentId;
+    BSVC.fromPcvc=YES;
+    
+    [self.navigationController pushViewController:BSVC animated:YES];
+
+}
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }

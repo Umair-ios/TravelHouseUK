@@ -199,7 +199,7 @@
             [backbtn setHidden:YES];
             [scroller addSubview:bookingview];
             [Generalfunctionclass addColoredlayer:bookingview forColor:@"gray"];
-            [txtPnrno setText:pnrno];
+         //   [txtPnrno setText:pnrno];
             [txtpaypalid setText:paypalid];
             
             CGRect rec=tempview.frame;

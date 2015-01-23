@@ -99,7 +99,7 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
     
     NSString *strWithURL = [NSString stringWithFormat:@"%@",baseurl];
     
-    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=%@&txtMail=%@",SecurityKey,txtType,[params objectAtIndex:0],[params objectAtIndex:1]];
+    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=non&txtMail=%@",SecurityKey,txtType,[params objectAtIndex:1]];
     
     //strWithURL = [strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"strConfirmChallenge=%@",strWithURL);
@@ -121,21 +121,10 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
     //NSError* error = nil;
     responseData = [NSURLConnection sendSynchronousRequest:request     returningResponse:&response error:&error];
   //  NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"bookingService responseString=%@",strWithURL);
+    NSString *myString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"bookingService responseString=%@",myString);
     
-    //[loader dismissWithClickedButtonIndex:0 animated:YES];
-    /*if(!error)
-    {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"bookingService" message:responseString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alert show];
-        //return response;
-        
-    }
-    else
-    {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Contact Us" message:@"Some Error occured. Please try again later." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-        [alert show];
-    }*/
+    
 }
 
 #pragma mark - subscribeService Method
