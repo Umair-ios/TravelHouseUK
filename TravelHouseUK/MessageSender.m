@@ -7,6 +7,8 @@
 //
 
 #import "MessageSender.h"
+#import "SBJson.h"
+#import "XMLReader.h"
 
 #define SecurityKey  @"2014TRV1PH3M@ILs3RV3r"
 #define baseurl @"http://m.travelhouseuk.co.uk/iphoneemail.php"
@@ -83,23 +85,48 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
         [alert show];
     }
 }
-
+-(NSString*) bv_jsonStringWithPrettyPrint:(BOOL) prettyPrint AndDictionary:(NSDictionary *)dic{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic
+                                                       options:(NSJSONWritingOptions)    (prettyPrint ? NSJSONWritingPrettyPrinted : 0)
+                                                         error:&error];
+    
+    if (! jsonData) {
+        NSLog(@"bv_jsonStringWithPrettyPrint: error: %@", error.localizedDescription);
+        return @"{}";
+    } else {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+}
 #pragma mark - bookingService Method
 -(void)bookingService:(NSArray*)params
 {
-    //dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    NSError *parseError = nil;
+    NSDictionary *xmlDictionary = [XMLReader dictionaryForXMLString:[params objectAtIndex:1] error:&parseError];
+    NSLog(@" %@", xmlDictionary);
     
-	//dispatch_async(concurrentQueue, ^{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:xmlDictionary
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
     
-    //[loader show];
+
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
     
-    NSError *error=nil;
+    /*
+    NSError *error = nil;
+    NSDictionary *dict = [XMLReader dictionaryForXMLString:[params objectAtIndex:1] error:&error];
+
+    NSString *jsonString = [self bv_jsonStringWithPrettyPrint:YES AndDictionary:dict];
+    */
+     
     NSString *txtType=@"booking";
-    /*NSString *strWithURL = [NSString stringWithFormat:@"%@txtSecure=%@&txtType=%@&txtName=%@&txtTelephone=%@&txtEmail=%@&txtDepartment=%@&txtMessage=%@",baseurl,SecurityKey,txtType,[params objectAtIndex:0],[params objectAtIndex:1],[params objectAtIndex:2],[params objectAtIndex:3],[params objectAtIndex:4]];*/
     
     NSString *strWithURL = [NSString stringWithFormat:@"%@",baseurl];
     
-    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=non&txtMail=%@",SecurityKey,txtType,[params objectAtIndex:1]];
+    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=non&txtMail=%@",SecurityKey,txtType,jsonString];
     
     //strWithURL = [strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"strConfirmChallenge=%@",strWithURL);
@@ -123,7 +150,6 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
   //  NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSString *myString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSLog(@"bookingService responseString=%@",myString);
-    
     
 }
 
