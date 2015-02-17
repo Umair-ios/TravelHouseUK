@@ -7,8 +7,6 @@
 //
 
 #import "MessageSender.h"
-#import "SBJson.h"
-#import "XMLReader.h"
 
 #define SecurityKey  @"2014TRV1PH3M@ILs3RV3r"
 #define baseurl @"http://m.travelhouseuk.co.uk/iphoneemail.php"
@@ -59,7 +57,6 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
     
     NSData* responseData = nil;
     NSURL *url=[NSURL URLWithString:[strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    responseData = [NSMutableData data] ;
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url];
     //NSString *bodydata=[NSString stringWithFormat:@"data=%@",jsonString];
     
@@ -101,43 +98,18 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
 #pragma mark - bookingService Method
 -(void)bookingService:(NSArray*)params
 {
-
-    NSError *parseError = nil;
-    NSDictionary *xmlDictionary = [XMLReader dictionaryForXMLString:[params objectAtIndex:1] error:&parseError];
-    NSLog(@" %@", xmlDictionary);
+    NSString *xmlString = [params objectAtIndex:1];
+    NSString *escapedString = [xmlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     NSError *error;
     
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:xmlDictionary
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    
-
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        
-    
-    /*
-    NSError *error = nil;
-    NSDictionary *dict = [XMLReader dictionaryForXMLString:[params objectAtIndex:1] error:&error];
-
-    NSString *jsonString = [self bv_jsonStringWithPrettyPrint:YES AndDictionary:dict];
-    */
-     
     NSString *txtType=@"booking";
     
     NSString *strWithURL = [NSString stringWithFormat:@"%@",baseurl];
     
-    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=non&txtMail=%@",SecurityKey,txtType,jsonString];
-    
-    //strWithURL = [strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"strConfirmChallenge=%@",strWithURL);
-    
-    //NSURL *myURL = [NSURL URLWithString:strWithURL];
-    
-    //NSString *response=[NSString stringWithContentsOfURL:myURL encoding:NSUTF8StringEncoding error:&error];
+    NSString *data = [NSString stringWithFormat:@"txtSecure=%@&txtType=%@&txtPay=non&txtMail=%@",SecurityKey,txtType,escapedString];
     
     NSData* responseData = nil;
     NSURL *url=[NSURL URLWithString:[strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    responseData = [NSMutableData data] ;
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url];
     //NSString *bodydata=[NSString stringWithFormat:@"data=%@",jsonString];
     
@@ -147,10 +119,8 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
     NSURLResponse* response;
     //NSError* error = nil;
     responseData = [NSURLConnection sendSynchronousRequest:request     returningResponse:&response error:&error];
-  //  NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSString *myString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"bookingService responseString=%@",myString);
-    
+    NSLog(@"responseString=%@",myString);
 }
 
 #pragma mark - subscribeService Method
@@ -193,7 +163,6 @@ static MessageSender *sharedAwardCenter = nil;    // static instance variable
         
         NSData* responseData = nil;
         NSURL *url=[NSURL URLWithString:[strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        responseData = [NSMutableData data] ;
         NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url];
         //NSString *bodydata=[NSString stringWithFormat:@"data=%@",jsonString];
         

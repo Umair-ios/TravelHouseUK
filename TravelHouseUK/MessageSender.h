@@ -11,7 +11,6 @@
 
 @interface MessageSender : NSObject
 
-
 + (MessageSender *)sharedCenter;
 
 -(void)contactService:(NSArray*)params;

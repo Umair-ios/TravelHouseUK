@@ -809,7 +809,7 @@
     
         NSArray *arr=[[NSArray alloc]initWithObjects:paymentId,smsg, nil];
         
-        [[MessageSender sharedCenter] performSelectorInBackground:@selector(bookingService:) withObject:arr];
+        [[MessageSender sharedCenter] performSelectorInBackground:@selector(bookingService:) withObject:arr ];
 
     
     NSString *nibname=@"";

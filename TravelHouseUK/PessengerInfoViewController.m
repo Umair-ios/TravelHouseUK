@@ -42,6 +42,8 @@
     return self;
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+
     data.sessionId=nil;
 }
 - (void)viewDidLoad

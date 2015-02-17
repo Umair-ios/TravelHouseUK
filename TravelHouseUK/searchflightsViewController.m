@@ -678,6 +678,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     self.view.userInteractionEnabled=YES;
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
     [[dataStorage sharedCenter] clearData];
@@ -1178,14 +1179,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
     check=-1;
-    NSString *attr=nil;
-    
-    NSArray *a=[attributeDict allValues];
-    if([a count]==1)
-    {
-        attr=[a objectAtIndex:0];
-    }
-    
+
     if ( [elementName isEqualToString:@"Itinerary"]) {
         // addresses is an NSMutableArray instance variable
         NSLog(@"%d",iter++);

@@ -32,6 +32,8 @@
     return self;
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+
     if (fromPcvc==NO) {
             }
     
@@ -194,7 +196,10 @@
            
             CGRect bookrect=bookingview.frame;
             bookrect.origin.y=5;
-            bookrect.origin.x=bookviewx;
+            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+                bookrect.origin.x=bookviewx/2;
+            else
+                bookrect.origin.x=bookviewx;
             [bookingview setFrame:bookrect];
             [backbtn setHidden:YES];
             [scroller addSubview:bookingview];
@@ -309,18 +314,13 @@
         
         if(!bookingDone)
         {
-            if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+         
                 temp=grandTotalView.frame;
                 temp.origin.x=10;
                 temp.origin.y=rec.size.height+10;
                 [grandTotalView setFrame:temp];
-            }else{
-                temp=grandTotalView.frame;
-                temp.origin.x=25;
-                temp.origin.y=rec.size.height+10;
-                [grandTotalView setFrame:temp];
 
-            }
+        
             
             [scroller addSubview:grandTotalView];
             
