@@ -195,7 +195,6 @@
 		80083C2B19BF10F500533A35 /* watch.png in Resources */ = {isa = PBXBuildFile; fileRef = 80083C2919BF10F500533A35 /* watch.png */; };
 		80083C2C19BF10F500533A35 /* calander.png in Resources */ = {isa = PBXBuildFile; fileRef = 80083C2A19BF10F500533A35 /* calander.png */; };
 		80165FCB1A5FEA5A0011E23A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 80165FCA1A5FEA5A0011E23A /* libz.dylib */; };
-		80165FCD1A5FEA9D0011E23A /* BugSense-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80165FCC1A5FEA9D0011E23A /* BugSense-iOS.framework */; };
 		80165FD01A5FFD0D0011E23A /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 80165FCE1A5FFD0D0011E23A /* check.png */; };
 		80165FD11A5FFD0D0011E23A /* uncheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 80165FCF1A5FFD0D0011E23A /* uncheck.png */; };
 		805C4430195987D80074C0BE /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 805C442D195987D80074C0BE /* SVProgressHUD.bundle */; };
@@ -424,7 +423,6 @@
 		80083C2A19BF10F500533A35 /* calander.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calander.png; sourceTree = "<group>"; };
 		80165FC81A5FE7270011E23A /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "BugSense-iOS.framework"; sourceTree = "<group>"; };
 		80165FCA1A5FEA5A0011E23A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		80165FCC1A5FEA9D0011E23A /* BugSense-iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BugSense-iOS.framework"; path = "../BugSense-iOS.framework"; sourceTree = "<group>"; };
 		80165FCE1A5FFD0D0011E23A /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		80165FCF1A5FFD0D0011E23A /* uncheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uncheck.png; sourceTree = "<group>"; };
 		805C442C195987D80074C0BE /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
@@ -441,7 +439,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80165FCD1A5FEA9D0011E23A /* BugSense-iOS.framework in Frameworks */,
 				80165FCB1A5FEA5A0011E23A /* libz.dylib in Frameworks */,
 				13EB461818C71A08000E153E /* AVFoundation.framework in Frameworks */,
 				13EB461618C719FD000E153E /* Security.framework in Frameworks */,
@@ -864,7 +861,6 @@
 		2295EAB217F9BCBE00E7A5BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				80165FCC1A5FEA9D0011E23A /* BugSense-iOS.framework */,
 				80165FCA1A5FEA5A0011E23A /* libz.dylib */,
 				80165FC81A5FE7270011E23A /* BugSense-iOS.framework */,
 				13EB461718C71A08000E153E /* AVFoundation.framework */,
